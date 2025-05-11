@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body {
+    background-color: black;
+  }
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+.fantask {display: none}
+.fantasy {display: none}
+.andet {display: none}
+img {vertical-align: middle;}
+
+/* søreger for at knapperne er centreret i toppen */
+.folder {
+	position: absolute;
+  top: 30px;
+  left: 50%;
+  right: 50%;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: auto auto auto;
+  gap: 25px;
+  text-align: center;
+}
+
+.mapper {
+  background-color: gray;
+  border: none;
+  color: white;
+  padding: 10px;
+  display: inline-block;
+  font-size: 25px;
+  border-radius: 15px;
+}
+
+.fullScreen {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  display: flex;
+  justify-content: center;
+  margin-top: 15%;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 500px;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 40px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+</style>
+</head>
+<body>
+<div class="slideshow-container">
+  <div class="fantask">
+    <img src="https://www.fantask.dk/catalogs/posters/fantask/fantask_1.jpg" style="height:1000px">
+  </div>
+
+  <div class="fantask">
+    <img src="https://www.fantask.dk/catalogs/posters/fantask/fantask_2.jpg" style="height:1000px">
+  </div>
+
+  <div class="fantask">
+    <img src="https://www.fantask.dk/catalogs/posters/fantask/fantask_3.jpg" style="height:1000px">
+  </div>
+
+
+  <div class="fantasy">
+    <img src="https://www.fantask.dk/catalogs/posters/fantasy/fantasy_1.jpg" style="height:1000px">
+  </div>
+  
+  <div class="fantasy">
+    <img src="https://www.fantask.dk/catalogs/posters/fantasy/fantasy_2.jpg" style="height:1000px">
+  </div>
+  
+  <div class="fantasy">
+    <img src="https://www.fantask.dk/catalogs/posters/fantasy/fantasy_3.jpg" style="height:1000px">
+  </div>
+
+
+  <div class="andet">
+    <img src="/Programmering fritid/FantaskProjekt/andet/chair.jpg" style="width:100%">
+  </div>
+  
+  <div class="andet">
+    <img src="/Programmering fritid/FantaskProjekt/andet/table.jpg" style="width:100%">
+  </div>
+  
+  <div class="andet">
+    <img src="/Programmering fritid/FantaskProjekt/andet/terninger.jpg" style="width:100%">
+  </div>
+</div>
+
+<div class="folder">
+  <div><button class="mapper" onclick="fantask()">Fantask</button></div>
+  <div><button class="mapper" onclick="fantasy()">Fantasy</button></div>
+  <div><button class="mapper" onclick="andet()">Andet</button></div>
+</div>
+
+<div id="knap"><button class="fullScreen" onclick="openFullscreen()">Open in Fullscreen Mode</button></div>
+
+<a class="prev" onclick="plusSlides(-1)">&laquo</a>
+<a class="next" onclick="plusSlides(1)">&raquo</a>
+
+<script>
+let knap = document.getElementById('knap');
+var elem = document.documentElement;
+function openFullscreen() {
+  knap.remove();
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } 
+}
+
+let t = 0;
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function fantask() {
+  t = 0;
+  showSlides(slideIndex = 1);
+}
+
+function fantasy() {
+  t = 1;
+  showSlides(slideIndex = 1);
+}
+
+function andet() {
+  t = 2;
+  showSlides(slideIndex = 1);
+}
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function showSlides(n) {
+  let i;
+  let slidesFantask = document.getElementsByClassName("fantask");
+  let slidesFantasy = document.getElementsByClassName("fantasy");
+  let slidesAndet = document.getElementsByClassName("andet");
+  if (t == 0) {
+    if (n > slidesFantask.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slidesFantask.length}
+    for (i = 0; i < slidesFantask.length; i++) {
+      slidesFantask[i].style.display = "none";
+    }
+    for (i = 0; i < slidesAndet.length; i++) {
+      slidesAndet[i].style.display = "none";
+    }
+    for (i = 0; i < slidesFantasy.length; i++) {
+      slidesFantasy[i].style.display = "none";
+    }
+    slidesFantask[slideIndex-1].style.display = "block";
+  } 
+  if (t == 1) {
+    if (n > slidesFantasy.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slidesFantasy.length}
+    for (i = 0; i < slidesFantasy.length; i++) {
+      slidesFantasy[i].style.display = "none";
+    }
+    for (i = 0; i < slidesAndet.length; i++) {
+      slidesAndet[i].style.display = "none";
+    }
+    for (i = 0; i < slidesFantask.length; i++) {
+      slidesFantask[i].style.display = "none";
+    }
+    slidesFantasy[slideIndex-1].style.display = "block";
+  }
+  if (t == 2) {
+    if (n > slidesAndet.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slidesAndet.length}
+    for (i = 0; i < slidesAndet.length; i++) {
+      slidesAndet[i].style.display = "none";
+    }
+    for (i = 0; i < slidesFantask.length; i++) {
+      slidesFantask[i].style.display = "none";
+    }
+    for (i = 0; i < slidesFantasy.length; i++) {
+      slidesFantasy[i].style.display = "none";
+    }
+  slidesAndet[slideIndex-1].style.display = "block";
+  }
+}
+</script>
+</body>
+</html> 
