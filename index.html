@@ -8,9 +8,9 @@
   }
 * {box-sizing: border-box}
 body {font-family: Verdana, sans-serif; margin:0}
-.fantask {display: none}
-.fantasy {display: none}
-.andet {display: none}
+.kategori1 {display: none}
+.kategori2 {display: none}
+.kategori3 {display: none}
 img {vertical-align: middle;}
 
 /* søreger for at knapperne er centreret i toppen */
@@ -26,7 +26,7 @@ img {vertical-align: middle;}
   text-align: center;
 }
 
-.mapper {
+.knap1, .knap2, .knap3 {
   background-color: gray;
   border: none;
   color: white;
@@ -80,56 +80,56 @@ img {vertical-align: middle;}
 </head>
 <body>
 <div class="slideshow-container">
-  <div class="fantask">
+  <div class="kategori1">
     <img src="https://www.fantask.dk/catalogs/posters/fantask/Fantask50.jpg" style="height:1000px">
   </div>
 
-  <div class="fantask">
+  <div class="kategori1">
     <img src="https://www.fantask.dk/catalogs/posters/fantask/24syv.jpg" style="height:1000px">
   </div>
 
-  <div class="fantasy">
+  <div class="kategori2">
     <img src="https://www.fantask.dk/catalogs/posters/Rasmus/Drageland.jpg" style="height:1000px">
   </div>
   
-  <div class="fantasy">
+  <div class="kategori2">
     <img src="https://www.fantask.dk/catalogs/posters/Rasmus/FallenDevil.jpg" style="height:1000px">
   </div>
   
-  <div class="fantasy">
+  <div class="kategori2">
     <img src="https://www.fantask.dk/catalogs/posters/Rasmus/Initiation.jpg" style="height:1000px">
   </div>
 
-  <div class="fantasy">
+  <div class="kategori2">
     <img src="https://www.fantask.dk/catalogs/posters/Rasmus/MountainRaid.jpg" style="height:1000px">
   </div>
   
-  <div class="fantasy">
+  <div class="kategori2">
     <img src="https://www.fantask.dk/catalogs/posters/Rasmus/UmbariNecromancer.jpg" style="height:1000px">
   </div>
 	
-  <div class="fantasy">
+  <div class="kategori2">
     <img src="https://www.fantask.dk/catalogs/posters/Rasmus/vampyrdemon.jpg" style="height:1000px">
   </div>
 
-<div class="andet">
+<div class="kategori3">
     <img src="https://www.fantask.dk/catalogs/posters/Comics/Deadpool.jpg" style="height:1000px">
  </div>
 
-<div class="andet">
+<div class="kategori3">
     <img src="https://www.fantask.dk/catalogs/posters/Comics/IronMan.jpg" style="height:1000px">
  </div>
 
-<div class="andet">
+<div class="kategori3">
     <img src="https://www.fantask.dk/catalogs/posters/Comics/Valhalla.jpg" style="height:1000px">
  </div>
 	
 </div>
 
 <div class="folder">
-  <div><button class="mapper" onclick="fantask()">Fantask</button></div>
-  <div><button class="mapper" onclick="fantasy()">Fantasy</button></div>
-  <div><button class="mapper" onclick="andet()">Comics</button></div>
+  <div><button class="knap1" onclick="kategori1(), markering('knap1', 'rgb(61, 61, 61)', 'knap2', 'gray', 'knap3', 'gray')">Fantask</button></div>
+  <div><button class="knap2" onclick="kategori2(), markering('knap2', 'rgb(61, 61, 61)', 'knap1', 'gray', 'knap3', 'gray')">Fantasy</button></div>
+  <div><button class="knap3" onclick="kategori3(), markering('knap3', 'rgb(61, 61, 61)', 'knap1', 'gray', 'knap2', 'gray')">Comics</button></div>
 </div>
 
 <div id="knap"><button class="fullScreen" onclick="openFullscreen()">Open in Fullscreen Mode</button></div>
@@ -151,19 +151,34 @@ let t = 0;
 let slideIndex = 1;
 showSlides(slideIndex);
 
-function fantask() {
+function kategori1() {
   t = 0;
   showSlides(slideIndex = 1);
 }
 
-function fantasy() {
+function kategori2() {
   t = 1;
   showSlides(slideIndex = 1);
 }
 
-function andet() {
+function kategori3() {
   t = 2;
   showSlides(slideIndex = 1);
+}
+
+function markering(buttonClass1, chosen, buttonClass2, notChosen1, buttonClass3, notChosen2) {
+  const btn1 = document.getElementsByClassName(buttonClass1);
+  const btn2 = document.getElementsByClassName(buttonClass2);
+  const btn3 = document.getElementsByClassName(buttonClass3);
+  for (let i = 0; i < btn1.length; i++) {
+    btn1[i].style.backgroundColor = chosen;
+  }
+  for (let i = 0; i < btn2.length; i++) {
+    btn2[i].style.backgroundColor = notChosen1;
+  }
+  for (let i = 0; i < btn3.length; i++) {
+    btn3[i].style.backgroundColor = notChosen2;
+  }
 }
 
 function plusSlides(n) {
@@ -172,50 +187,52 @@ function plusSlides(n) {
 
 function showSlides(n) {
   let i;
-  let slidesFantask = document.getElementsByClassName("fantask");
-  let slidesFantasy = document.getElementsByClassName("fantasy");
-  let slidesAndet = document.getElementsByClassName("andet");
+  let slidesKategori1 = document.getElementsByClassName("kategori1");
+  let slidesKategori2 = document.getElementsByClassName("kategori2");
+  let slidesKategori3 = document.getElementsByClassName("kategori3");
   if (t == 0) {
-    if (n > slidesFantask.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = slidesFantask.length}
-    for (i = 0; i < slidesFantask.length; i++) {
-      slidesFantask[i].style.display = "none";
+    if (n > slidesKategori1.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slidesKategori1.length}
+    for (i = 0; i < slidesKategori1.length; i++) {
+      slidesKategori1[i].style.display = "none";
     }
-    for (i = 0; i < slidesAndet.length; i++) {
-      slidesAndet[i].style.display = "none";
+    for (i = 0; i < slidesKategori3.length; i++) {
+      slidesKategori3[i].style.display = "none";
     }
-    for (i = 0; i < slidesFantasy.length; i++) {
-      slidesFantasy[i].style.display = "none";
+    for (i = 0; i < slidesKategori2.length; i++) {
+      slidesKategori2[i].style.display = "none";
     }
-    slidesFantask[slideIndex-1].style.display = "block";
+    slidesKategori1[slideIndex-1].style.display = "block";
   } 
+  
   if (t == 1) {
-    if (n > slidesFantasy.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = slidesFantasy.length}
-    for (i = 0; i < slidesFantasy.length; i++) {
-      slidesFantasy[i].style.display = "none";
+    if (n > slidesKategori2.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slidesKategori2.length}
+    for (i = 0; i < slidesKategori2.length; i++) {
+      slidesKategori2[i].style.display = "none";
     }
-    for (i = 0; i < slidesAndet.length; i++) {
-      slidesAndet[i].style.display = "none";
+    for (i = 0; i < slidesKategori3.length; i++) {
+      slidesKategori3[i].style.display = "none";
     }
-    for (i = 0; i < slidesFantask.length; i++) {
-      slidesFantask[i].style.display = "none";
+    for (i = 0; i < slidesKategori1.length; i++) {
+      slidesKategori1[i].style.display = "none";
     }
-    slidesFantasy[slideIndex-1].style.display = "block";
+    slidesKategori2[slideIndex-1].style.display = "block";
   }
+
   if (t == 2) {
-    if (n > slidesAndet.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = slidesAndet.length}
-    for (i = 0; i < slidesAndet.length; i++) {
-      slidesAndet[i].style.display = "none";
+    if (n > slidesKategori3.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slidesKategori3.length}
+    for (i = 0; i < slidesKategori3.length; i++) {
+      slidesKategori3[i].style.display = "none";
     }
-    for (i = 0; i < slidesFantask.length; i++) {
-      slidesFantask[i].style.display = "none";
+    for (i = 0; i < slidesKategori1.length; i++) {
+      slidesKategori1[i].style.display = "none";
     }
-    for (i = 0; i < slidesFantasy.length; i++) {
-      slidesFantasy[i].style.display = "none";
+    for (i = 0; i < slidesKategori2.length; i++) {
+      slidesKategori2[i].style.display = "none";
     }
-  slidesAndet[slideIndex-1].style.display = "block";
+  slidesKategori3[slideIndex-1].style.display = "block";
   }
 }
 </script>
