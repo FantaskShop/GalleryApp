@@ -36,12 +36,6 @@ img {vertical-align: middle;}
   border-radius: 15px;
 }
 
-.fullScreen {
-  position: absolute;
-  top: 8px;
-  left: 16px;
-}
-
 /* Slideshow container */
 .slideshow-container {
   position: absolute;
@@ -81,6 +75,10 @@ img {vertical-align: middle;}
 <body>
 <div class="slideshow-container">
   <div class="kategori1">
+    <img src="https://www.fantask.dk/catalogs/posters/fantask/FantaskMcKean.jpg" style="height:1000px">
+ </div>
+ 
+  <div class="kategori1">
     <img src="https://www.fantask.dk/catalogs/posters/fantask/Fantask50.jpg" style="height:1000px">
   </div>
 
@@ -88,10 +86,6 @@ img {vertical-align: middle;}
     <img src="https://www.fantask.dk/catalogs/posters/fantask/24syv.jpg" style="height:1000px">
   </div>
 
- <div class="kategori1">
-    <img src="https://www.fantask.dk/catalogs/posters/fantask/FantaskMcKean.jpg" style="height:1000px">
- </div>
-	
   <div class="kategori2">
     <img src="https://www.fantask.dk/catalogs/posters/Rasmus/Drageland.jpg" style="height:1000px">
   </div>
@@ -136,21 +130,10 @@ img {vertical-align: middle;}
   <div><button class="knap3" onclick="kategori3(), markering('knap3', 'blue', 'knap1', 'gray', 'knap2', 'gray')">Comics</button></div>
 </div>
 
-<div id="knap"><button class="fullScreen" onclick="openFullscreen()">Open in Fullscreen Mode</button></div>
-
 <a class="prev" onclick="plusSlides(-1)">&laquo</a>
 <a class="next" onclick="plusSlides(1)">&raquo</a>
 
 <script>
-let knap = document.getElementById('knap');
-var elem = document.documentElement;
-function openFullscreen() {
-  knap.remove();
-  if (elem.requestFullscreen) {
-    elem.requestFullscreen();
-  } 
-}
-
 let t = 0;
 let slideIndex = 1;
 showSlides(slideIndex);
